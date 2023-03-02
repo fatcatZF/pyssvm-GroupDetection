@@ -6,6 +6,8 @@ from statsmodels.tsa.stattools import grangercausalitytests
 import tslearn.metrics 
 import argparse 
 
+from utils import create_edgeNode_relation
+
 
 #Gaussian Mixture Models
 N0 = norm(0, 0.5)
@@ -15,27 +17,6 @@ N3 = norm(0, 7.6)
 
 GMM = [N0, N1, N2, N3]
 
-
-def encode_onehot(labels):
-    classes = set(labels)
-    classes_dict = {c: np.identity(len(classes))[i, :] for i, c in
-                    enumerate(classes)}
-    labels_onehot = np.array(list(map(classes_dict.get, labels)),
-                             dtype=np.int32)
-    return labels_onehot
-
-
-def create_edgeNode_relation(num_nodes, self_loops=False):
-
-    if self_loops:
-        indices = np.ones([num_nodes, num_nodes])
-    else:
-        indices = np.ones([num_nodes,num_nodes])-np.eye(num_nodes)
-
-    rel_rec = np.array(encode_onehot(np.where(indices)[0]), dtype=np.float32)
-    rel_send = np.array(encode_onehot(np.where(indices)[1]), dtype=np.float32)
-
-    return rel_rec, rel_send
 
 
 
