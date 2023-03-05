@@ -344,45 +344,57 @@ if __name__=="__main__":
     ground = build_ground(examples_train)
 
     #lists to store pairwise features
-    pairwise_similarity_train = []
-    pairwise_dissimilarity_train = []
-    pairwise_similarity_valid = []
-    pairwise_dissimilarity_valid = []
-    pairwise_similarity_test = []
-    pairwise_dissimilarity_test = []
+    #pairwise_similarity_train = []
+    #pairwise_dissimilarity_train = []
+    pairwise_features_train = []
+    #pairwise_similarity_valid = []
+    #pairwise_dissimilarity_valid = []
+    pairwise_features_valid = []
+    #pairwise_similarity_test = []
+    #pairwise_dissimilarity_test = []
+    pairwise_features_test = []
 
     # compute pairwise features for the training examples 
     for example in examples_train:
         similarity, dissimilarity, combined_features = compute_similarity(example, ground)
-        pairwise_similarity_train.append(similarity)
-        pairwise_dissimilarity_train.append(dissimilarity)
+        #pairwise_similarity_train.append(similarity)
+        #pairwise_dissimilarity_train.append(dissimilarity)
+        pairwise_features_train.append(combined_features)
 
     # compute pairwise features for the validation examples
     for example in examples_valid:
         similarity, dissimilarity, combined_features = compute_similarity(example, ground)
-        pairwise_similarity_valid.append(similarity)
-        pairwise_dissimilarity_valid.append(dissimilarity)
+        #pairwise_similarity_valid.append(similarity)
+        #pairwise_dissimilarity_valid.append(dissimilarity)
+        pairwise_features_valid.append(combined_features)
 
     # compute pairwise features for the validation examples
     for example in examples_test:
         similarity, dissimilarity, combined_features = compute_similarity(example, ground)
-        pairwise_similarity_test.append(similarity)
-        pairwise_dissimilarity_test.append(dissimilarity)
+        #pairwise_similarity_test.append(similarity)
+        #pairwise_dissimilarity_test.append(dissimilarity)
+        pairwise_features_test.append(combined_features)
 
     
     # Save the computed pairwise features
-    with open(os.path.join(data_folder, "pairwise_similarity_train.pkl"), 'wb') as f:
-        pickle.dump(pairwise_similarity_train, f)
-    with open(os.path.join(data_folder, "pairwise_dissimilarity_train.pkl"), 'wb') as f:
-        pickle.dump(pairwise_dissimilarity_train, f)
-    with open(os.path.join(data_folder, "pairwise_similarity_valid.pkl"), 'wb') as f:
-        pickle.dump(pairwise_similarity_valid, f)
-    with open(os.path.join(data_folder, "pairwise_dissimilarity_valid.pkl"), 'wb') as f:
-        pickle.dump(pairwise_dissimilarity_valid, f)
-    with open(os.path.join(data_folder, "pairwise_similarity_test.pkl"), 'wb') as f:
-        pickle.dump(pairwise_similarity_test, f)
-    with open(os.path.join(data_folder, "pairwise_dissimilarity_test.pkl"), 'wb') as f:
-        pickle.dump(pairwise_dissimilarity_test, f)
+    #with open(os.path.join(data_folder, "pairwise_similarity_train.pkl"), 'wb') as f:
+    #    pickle.dump(pairwise_similarity_train, f)
+    #with open(os.path.join(data_folder, "pairwise_dissimilarity_train.pkl"), 'wb') as f:
+    #    pickle.dump(pairwise_dissimilarity_train, f)
+    with open(os.path.join(data_folder, "pairwise_features_train.pkl"), 'wb') as f:
+        pickle.dump(pairwise_features_train, f)
+    #with open(os.path.join(data_folder, "pairwise_similarity_valid.pkl"), 'wb') as f:
+    #    pickle.dump(pairwise_similarity_valid, f)
+    #with open(os.path.join(data_folder, "pairwise_dissimilarity_valid.pkl"), 'wb') as f:
+    #    pickle.dump(pairwise_dissimilarity_valid, f)
+    with open(os.path.join(data_folder, "pairwise_features_valid.pkl"), 'wb') as f:
+        pickle.dump(pairwise_features_valid, f)
+    #with open(os.path.join(data_folder, "pairwise_similarity_test.pkl"), 'wb') as f:
+    #    pickle.dump(pairwise_similarity_test, f)
+    #with open(os.path.join(data_folder, "pairwise_dissimilarity_test.pkl"), 'wb') as f:
+    #    pickle.dump(pairwise_dissimilarity_test, f)
+    with open(os.path.join(data_folder, "pairwise_features_test.pkl"), 'wb') as f:
+        pickle.dump(pairwise_features_test, f)
     
     
     
